@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,6 +9,25 @@ export default function MobileNav() {
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+    };
+  }, [isOpen]);
 
   const menuItems = [
     { href: '/', label: 'Home' },
@@ -56,7 +75,7 @@ export default function MobileNav() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
               onClick={closeMenu}
             />
 
@@ -66,11 +85,11 @@ export default function MobileNav() {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="md:hidden fixed right-0 top-0 bottom-0 w-3/4 max-w-sm bg-void border-l border-ether/20 z-50 overflow-y-auto"
+              className="md:hidden fixed right-0 top-0 bottom-0 w-3/4 max-w-sm bg-void border-l border-ether/20 z-[70] overflow-y-auto"
               style={{
-                paddingTop: 'env(safe-area-inset-top)',
-                paddingBottom: 'env(safe-area-inset-bottom)',
-                paddingRight: 'env(safe-area-inset-right)',
+                paddingTop: '1rem',
+                paddingBottom: '1rem',
+                paddingRight: '0',
               }}
             >
               <div className="p-6">
