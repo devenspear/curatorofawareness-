@@ -15,20 +15,53 @@ export default function SimulationCalculator() {
     <div className="max-w-2xl mx-auto p-6 bg-deep/50 rounded-2xl backdrop-blur-md border border-ether/20">
       <h3 className="text-3xl font-playfair mb-6 text-center">Simulation Probability Calculator</h3>
 
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div>
-          <label className="flex justify-between mb-2 text-sm">Civilization Survival Rate <span className="text-ether">{civSurvival}%</span></label>
-          <input type="range" min="0" max="100" value={civSurvival} onChange={(e) => setCivSurvival(e.target.value)} className="w-full h-2 bg-void rounded-lg appearance-none cursor-pointer accent-ether" />
+          <label className="flex justify-between mb-3 text-base font-medium">
+            Civilization Survival Rate
+            <span className="text-ether font-bold">{civSurvival}%</span>
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={civSurvival}
+            onChange={(e) => setCivSurvival(e.target.value)}
+            className="w-full h-3 bg-void rounded-lg appearance-none cursor-pointer accent-ether touch-manipulation slider-ios"
+            style={{ minHeight: '44px' }}
+          />
         </div>
 
         <div>
-          <label className="flex justify-between mb-2 text-sm">Technology Growth <span className="text-ether">{techGrowth}%</span></label>
-          <input type="range" min="0" max="100" value={techGrowth} onChange={(e) => setTechGrowth(e.target.value)} className="w-full h-2 bg-void rounded-lg appearance-none cursor-pointer accent-ether" />
+          <label className="flex justify-between mb-3 text-base font-medium">
+            Technology Growth
+            <span className="text-ether font-bold">{techGrowth}%</span>
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={techGrowth}
+            onChange={(e) => setTechGrowth(e.target.value)}
+            className="w-full h-3 bg-void rounded-lg appearance-none cursor-pointer accent-ether touch-manipulation slider-ios"
+            style={{ minHeight: '44px' }}
+          />
         </div>
 
         <div>
-          <label className="flex justify-between mb-2 text-sm">Consciousness Upload Probability <span className="text-ether">{consciousnessProb}%</span></label>
-          <input type="range" min="0" max="100" value={consciousnessProb} onChange={(e) => setConsciousnessProb(e.target.value)} className="w-full h-2 bg-void rounded-lg appearance-none cursor-pointer accent-ether" />
+          <label className="flex justify-between mb-3 text-base font-medium">
+            Consciousness Upload Probability
+            <span className="text-ether font-bold">{consciousnessProb}%</span>
+          </label>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value={consciousnessProb}
+            onChange={(e) => setConsciousnessProb(e.target.value)}
+            className="w-full h-3 bg-void rounded-lg appearance-none cursor-pointer accent-ether touch-manipulation slider-ios"
+            style={{ minHeight: '44px' }}
+          />
         </div>
       </div>
 
